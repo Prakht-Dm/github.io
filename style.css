@@ -1,58 +1,3 @@
-/* Указываем box sizing */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Убираем внутренние отступы */
-ul[class],
-ol[class] {
-  padding: 0;
-}
-
-/* Убираем внешние отступы */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-ul[class],
-ol[class],
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd {
-  margin: 0;
-}
-
-/* Выставляем основные настройки по-умолчанию для body */
-body {
-  min-height: 100vh;
-  scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-}
-
-/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
-ul[class],
-ol[class] {
-  list-style: none;
-}
-
-/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
-/* Упрощаем работу с изображениями */
-img {
-  max-width: 100%;
-  display: block;
-}
 
 /* Указываем понятную периодичность в потоке данных у article*/
 article > * + * {
@@ -77,88 +22,69 @@ select {
   }
 }
 
-body {
-    background: RGB(127, 205, 205);
-    font-family: "Roboto Mono", monospace;
+body{
+    background: rgb(151, 151, 151);
 }
-header{
-    font-size: 20px;
-background: rgb(230, 196, 60);
-width: 800px;
+
+.header{
+    background: black;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    padding-top: 10px;
+}
+.main_frame{
+    background: rgb(30, 63, 12);
+    height:640px;
+    width:640px;
+    margin-top: 10px;
+    margin-left: 25%;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: default;
+}
+.field_Square{
+background:rgb(11, 20, 14);
+width: 30px;
 height: 30px;
+margin: 1px;
+font-size: 25px;
 text-align: center;
 }
+.snake_body{
+background:white;
+width: 30px;
+height: 30px;
+margin: 1px;
+}
+.snake_head{
+  background:rgb(90, 80, 80);
+  width: 30px;
+  height: 30px;
+  margin: 1px;
+  }
+.fruit_apple{
+background:rgb(255, 0, 0);
+width: 30px;
+height: 30px;
+margin: 1px;
+border-radius: 45%;
+}
 
-.mainArea{
-    border: 2px solid rgb(230, 196, 60);
-    background: white;
-    width: 800px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    flex-direction: column;
-}
-.mainForm{
-    margin-top: 10px;
-    display: flex;
-    
-    align-items: center; 
-    flex-direction: column;
-}
-.nameInput{
-    width: 750px; 
-}
-.nameList{
-    align-items: left;
-  
-}
-.addName{
+
+.score_table{
+    width: 150px;
+    height: 45px;
     position: relative;
-    top: 2px;
-    width: 80px;
-    height: 40px;
+    background-color: black;
+    color: white;
+    top: -675px;
+    left: 150px;
+    font-size: 25px;
+    padding-left: 10px;
 }
 
-.listString{
-    background: cornsilk;
-    width: 750px;
-    margin: 12px;
-    text-align: left;
-    padding-left: 30px;
-    font-size: 20px;
+.score_table p{
+font-size: 35px;
 }
-
-
-
-
-/* Fill button styling */
-.fill {
-  margin: 10px;
-    font-size: 20px;
-    font-weight: 200;
-    letter-spacing: 1px;
-    padding: 13px 50px 13px;
-    outline: 0;
-    border: 1px solid black;
-    cursor: pointer;
-    position: relative;
-    background-color: rgba(0, 0, 0, 0);
-  }
-  
-  .fill::after {
-    content: "";
-    background-color: #ffe44c52;
-    width: 100%;
-    z-index: 0;
-    position: absolute;
-    height: 100%;
-    top: 7px;
-    left: 7px;
-    transition: 0.2s;
-  }
-  
-  .fill:hover::after {
-    top: 0px;
-    left: 0px;
-  }
