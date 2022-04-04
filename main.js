@@ -11,16 +11,9 @@ const SNAKE_DIRECTIONS = {
 };
 let currentSnakeDirection = SNAKE_DIRECTIONS.BOTTOM; 
 let pressedDirection = SNAKE_DIRECTIONS.BOTTOM;
+let runGame; 
 
-
-createFruit();
-createField(400);
-showScore(currentScore);
-
-let runGame = setInterval(changeSnakePosition, 100);
-
-document.addEventListener('keydown', changeSnakeDirection);
-
+starNewGame();
 
 function changeSnakeDirection(pressedButton) {
     if (pressedButton.code === "KeyS" && currentSnakeDirection !== SNAKE_DIRECTIONS.TOP) pressedDirection = SNAKE_DIRECTIONS.BOTTOM; 
@@ -91,7 +84,7 @@ createField(400);
 }
 
 function makeSnakeLonger(snakeTail){
-    snake.push(snakeTail[snakeTail.length])
+    snake.push(snakeTail[snakeTail.length]);
     createFruit();
     showScore(++currentScore);
 }
@@ -109,11 +102,25 @@ function showScore(score){
 }
 
 function gameOver(){
+   pauseGame();
+   alert(`GAME OVER!!\nYou ate ${currentScore} fruits\nPress Ok to play again`);
+   starNewGame();
+}
+
+function starNewGame(){ 
+    snake = DEAFAUL_SNAKE_POSITION.slice(0);
+    currentSnakeDirection = SNAKE_DIRECTIONS.BOTTOM; 
+    pressedDirection = SNAKE_DIRECTIONS.BOTTOM;
+    createFruit();
+    createField(400);
+    showScore(currentScore=0);
+    runGame = setInterval(changeSnakePosition, 100);
+    document.addEventListener('keydown', changeSnakeDirection);
+}
+
+function pauseGame(){
+    document.removeEventListener('keydown', changeSnakeDirection);
     currentSnakeDirection = SNAKE_DIRECTIONS.NONE;  
     clearInterval(runGame);
-   alert(`GAME OVER!!\nYou ate ${currentScore} fruits\nPress Ok to play again`);
-   showScore(currentScore=0);
-   snake = DEAFAUL_SNAKE_POSITION.slice(0);
-   currentSnakeDirection = SNAKE_DIRECTIONS.BOTTOM; 
-   runGame = setInterval(changeSnakePosition, 100);
+
 }
